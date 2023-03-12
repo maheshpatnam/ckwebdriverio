@@ -1,0 +1,7 @@
+# Node artifact files
+node_modules/
+allure-results/
+allure-report/
+reports/
+# Package files
+package-lock.json
