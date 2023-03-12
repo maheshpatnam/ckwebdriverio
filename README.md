@@ -14,10 +14,4 @@ npm test
 Key Features
 - Cucumber BDD framework
 - Page Object Design pattern
-- SuperTest API Integration
-- Multi envrionment support
 - Allure Report
-- Custome file download folder
-- File/Folder utilities
-- Assertion utilites
-- Steps Logging mechanism
