@@ -1,4 +1,4 @@
-
+@login
 Feature: Login feature
 
   Scenario Outline: Verify that user can login with valid data
@@ -23,7 +23,6 @@ provided during login
       | abced                      | wrongpassword | Sorry, dit is geen geldig e-mailadres              |
       | mahesh.patnam123@gmail.com | ab            | Je wachtwoord moet tussen 5 en 20 tekens lang zijn |
  
-  @login
 Scenario Outline: Verify that logged in user can add a new address
     Given I am on the login page
     When I enter valid <username> and <password>
