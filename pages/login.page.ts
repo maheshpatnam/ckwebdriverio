@@ -14,7 +14,7 @@ class LoginPage extends Page {
     }
 
     public get btnLogin() {
-        return $('//button[text()="Aanmelden / Registreren"]');
+        return $('//button[contains(text(),"Aanmelden")]');
     }
 
     public get inputPassword() {
@@ -28,18 +28,19 @@ class LoginPage extends Page {
         return $('//button[text()="accepteer alles"]');
     }
     public get msgInvalidEmailIdOrPassword() {
-        return $('.form-input__error');
+        return $('//p[contains(text(),"gebruikersnaam en wachtwoord")]');
     }
 
     /**
-     * Function to enter login  
+     * Function to perform login  
      * @param username 
+     * @param password 
      */
-    public async login(username: string,password: string) {
-        await click(this.btnLogin)
-        await setText(this.inputUsername, username)
-        await setText(this.inputPassword, password)
-        await click(this.btnSubmit)
+    public async login(username: string, password: string) {
+        await click(this.btnLogin);
+        await setText(this.inputUsername, username);
+        await setText(this.inputPassword, password);
+        await click(this.btnSubmit);
     }
 
     /**
@@ -50,16 +51,27 @@ class LoginPage extends Page {
     }
 
     /**
-     * function to check whether error message is displayed when enough information is not provided during login
+     * function to check whether error message is displayed or not
      */
     public async verifyErrorMessages(invalidLoginmessage: string) {
-        await isElementDisplayed(this.msgInvalidEmailIdOrPassword)
-        expect(await this.msgInvalidEmailIdOrPassword.getText()).toEqual(invalidLoginmessage)
+        await isElementDisplayed(this.msgInvalidEmailIdOrPassword);
+        expect(await this.msgInvalidEmailIdOrPassword.getText()).toEqual(invalidLoginmessage);
+        await browser.refresh()
     }
 
+    /**
+     * verify login page is displayed or not
+     */
+    public async verifyLoginPage() {
+        await isElementDisplayed(this.btnLogin);
+    }
+    /**
+     * function to open url
+     */
     async open() {
         await super.open('/heren');
-        await browser.maximizeWindow()
+        await browser.maximizeWindow();
+        await this.acceptCookies();
     }
 }
 

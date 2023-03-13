@@ -1,4 +1,4 @@
-import { click, setText, isElementDisplayed, selectVisibleText } from "../utils/commands";
+import { click, setText, isElementDisplayed } from "../utils/commands";
 import Page from './page';
 
 /**
@@ -10,7 +10,7 @@ class AddressPage extends Page {
     * define selectors using getter methods
     */
     public get btnMyaccount() {
-        return $('button[data-testid="HeaderAccount-myaccount-button"]');
+        return $('//span[text()="Mijn account"]');
     }
 
     public get btnNewAddress() {
@@ -20,7 +20,7 @@ class AddressPage extends Page {
         return $('#firstName-Bform');
     }
     public get inputlastName() {
-        return $('#lastName-inputField');
+        return $('#lastName-Bform');
     }
 
     public get inputStreet() {
@@ -61,10 +61,10 @@ class AddressPage extends Page {
         return $('section[data-testid="pvh-content-switch-card"]');
     }
     public get btnMenGender() {
-        return $('[data-testid] [data-testid="pvh-ToggleButton"]:nth-of-type(1)');
+        return $('[data-testid] [data-testid="pvh-ToggleButton"]:nth-of-type(2)');
     }
     public get btnAddNewAddress() {
-        return $('div[data-testid="pvh-card"]');
+        return $('button[data-testid="create-address-pvh-icon-button"]');
     }
 
 
@@ -78,6 +78,7 @@ class AddressPage extends Page {
      * @param zipcode 
      */
     public async addNewAddress(firstName: string, lastName: string, streetName: string, houseNumber: string, cityName: string, zipcode: string, countryName: string, billingAddress: string) {
+        await this.btnMyaccount.waitForClickable();
         await click(this.btnMyaccount);
         await click(this.anchorAddress);
         await click(this.btnAddNewAddress);
@@ -88,11 +89,10 @@ class AddressPage extends Page {
         await setText(this.inputHouseNumber, houseNumber);
         await setText(this.inputCity, cityName);
         await setText(this.inputZipcode, zipcode);
-        await selectVisibleText(this.selectCountryDropDown, countryName);
-        await selectVisibleText(this.selectBillingAddressDropDown, billingAddress);
+        await click(this.selectCountryDropDown);
+        await this.selectCountry()
         await click(this.btnSaveNewAddress);
     }
-
 
     /**
      * function to check newly added address message
@@ -104,14 +104,26 @@ class AddressPage extends Page {
     }
 
     /**
+     *  function to select country
+     */
+    public async selectCountry() {
+        const countryDropdown = await browser.$('#downshift-2-menu');
+        const firstCountry = await countryDropdown.$('#downshift-2-item-1');
+        await firstCountry.click();
+    }
+
+    /**
      * function to check whether address is added
      */
     public async isNewAddressDisplayed() {
         await isElementDisplayed(this.newAddress);
     }
 
+    /**
+     * function to open url
+     */
     async open() {
-        await super.open('/heren');
+        await super.open('/myaccount/addresses');
     }
 }
 

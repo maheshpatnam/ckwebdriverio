@@ -15,7 +15,6 @@ export const config: Options.Testrunner = {
         }
     },
 
-
     //
     // ==================
     // Specify Test Files
@@ -33,7 +32,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/features/**/login.feature'
+        './**/cklogin.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -69,12 +68,22 @@ export const config: Options.Testrunner = {
         maxInstances: 1,
         //
         browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: ['--disable-web-security', '--disable-blink-features', '--disable-blink-features=AutomationControlled', '--disable-popup-blocking', '--enable-automation', '--disable-gpu'],
+            prefs: {
+                "profile.default_content_setting_values.notifications": 2,
+                "credentials_enable_service": false,
+                "profile.password_manager_enabled": false,
+                "profile.managed_default_content_settings.autofill.addresses": false,
+            },
+        },
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    },
+    ],
     //
     // ===================
     // Test Configurations
@@ -149,14 +158,14 @@ export const config: Options.Testrunner = {
             outputDir: './allure-results',
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: true,
-        }],],
+        }]],
 
 
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./test/steps/login.steps.ts'],
+        require: ['./steps/cklogin.steps.ts'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)

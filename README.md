@@ -15,3 +15,37 @@ Key Features
 - Cucumber BDD framework
 - Page Object Design pattern
 - Allure Report
+
+
+
+# Folder structure
+```
+
+  └───features                 It has all feature files
+  └───pages                    It has all pages object files with selectors and functions 
+  └───steps                    It has all step definitions for feature files
+  └───utils                    It has helper functions.
+  
+```
+# Installation and 🏃 run test with webdriverio
+
+Clone the repo locally.
+
+`npm install`
+
+`npm test --cucumberOpts.tagExpression=@login`
+
+
+# TestResult
+
+### Following points can be improved in future :
+
+- Continous Integration.
+- Allure report with screenshots and videos if required.
+
+- Impliemnations of fixtures.
+- Add test selectors instead of using classes.(Need to check front end code base).
+- Retry on failure.
+- Run on different browser.
+- Parallelism and sharding.
+- Eslint and Prettier etc.
