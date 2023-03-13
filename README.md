@@ -39,10 +39,11 @@ Clone the repo locally.
 
 - Continous Integration.
 - Allure report with screenshots and videos if required.
-
 - Impliemnations of fixtures.
 - Add test selectors instead of using classes.(Need to check front end code base).
 - Retry on failure.
 - Run on different browser.
 - Parallelism and sharding.
 - Eslint and Prettier etc.
+- we need to add IDs also in FE code base for QA
+- Running tests in mobile browsers
