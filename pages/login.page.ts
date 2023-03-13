@@ -10,25 +10,25 @@ class LoginPage extends Page {
     * define selectors using getter methods
     */
     public get inputUsername() {
-        return $('input[id="logonId"]');
+        return $('#logonId');
     }
 
     public get btnLogin() {
-        return $('//button[contains(text(),"Aanmelden")]');
+        return $('.ck-Button__no-style.header-account__sign-in');
     }
 
     public get inputPassword() {
-        return $('input[id="logonPassword"]');
+        return $('#logonPassword');
     }
 
     public get btnSubmit() {
-        return $('//span[text()="Aanmelden"]');
+        return $('.login-popup__secondary-action-send span');
     }
     public get btnAcceptCookies() {
-        return $('//button[text()="accepteer alles"]');
+        return $('.cookie-notice__agree-button');
     }
     public get msgInvalidEmailIdOrPassword() {
-        return $('//p[contains(text(),"gebruikersnaam en wachtwoord")]');
+        return $('.form__error--display');
     }
 
     /**
@@ -56,7 +56,7 @@ class LoginPage extends Page {
     public async verifyErrorMessages(invalidLoginmessage: string) {
         await isElementDisplayed(this.msgInvalidEmailIdOrPassword);
         expect(await this.msgInvalidEmailIdOrPassword.getText()).toEqual(invalidLoginmessage);
-        await browser.refresh()
+        await browser.refresh();
     }
 
     /**

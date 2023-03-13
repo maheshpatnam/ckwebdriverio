@@ -10,9 +10,8 @@ class AddressPage extends Page {
     * define selectors using getter methods
     */
     public get btnMyaccount() {
-        return $('//span[text()="Mijn account"]');
+        return $('.header-account__name');
     }
-
     public get btnNewAddress() {
         return $('button[data-testid="create-address-pvh-icon-button"]');
     }
@@ -22,38 +21,30 @@ class AddressPage extends Page {
     public get inputlastName() {
         return $('#lastName-Bform');
     }
-
     public get inputStreet() {
         return $('#address1-Bform');
     }
-
     public get inputHouseNumber() {
         return $('#address2-Bform');
     }
-
     public get inputCity() {
         return $('#city-Bform');
     }
-
     public get inputZipcode() {
         return $('#zipCode-Bform');
     }
-
     public get selectCountryDropDown() {
         return $('#downshift-2-input');
     }
-
     public get selectBillingAddressDropDown() {
         return $('#downshift-1-input');
     }
-
     public get btnSaveNewAddress() {
         return $('button[data-testid="address-form-add-pvh-button"]');
     }
     public get notificationNewAddress() {
         return $('#success-alert-content');
     }
-
     public get anchorAddress() {
         return $('a[href*="addresses"]');
     }
@@ -66,7 +57,6 @@ class AddressPage extends Page {
     public get btnAddNewAddress() {
         return $('button[data-testid="create-address-pvh-icon-button"]');
     }
-
 
     /**
      * function to add new address

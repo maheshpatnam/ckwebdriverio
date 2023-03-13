@@ -33,7 +33,7 @@ Clone the repo locally.
 
 `npm install`
 
-`npm test --cucumberOpts.tagExpression=@login`
+`npm test`
 
 ### Following points can be improved in future :
 
@@ -47,3 +47,4 @@ Clone the repo locally.
 - Eslint and Prettier etc.
 - we need to add IDs also in FE code base for QA
 - Running tests in mobile browsers
+- Integration with browserstack or saucelabs

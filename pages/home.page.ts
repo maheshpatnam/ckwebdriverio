@@ -10,10 +10,10 @@ class HomePage extends Page {
     * define selectors using getter methods
     */
     public get btnMyaccount() {
-        return $('//*[text()="Mijn account"]');
+        return $('.header-account__name');
     }
     public get btnLogout() {
-        return $('//a[text()="Uitloggen"]');
+        return $('.ck-Button.account-flyout__signout-button');
     }
 
     /**
@@ -32,7 +32,7 @@ class HomePage extends Page {
         await click(this.btnMyaccount);
         await click(this.btnLogout);
     }
-    
+
     /**
      * function to open url
      */
