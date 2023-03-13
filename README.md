@@ -35,9 +35,6 @@ Clone the repo locally.
 
 `npm test --cucumberOpts.tagExpression=@login`
 
-
-# TestResult
-
 ### Following points can be improved in future :
 
 - Continous Integration.
